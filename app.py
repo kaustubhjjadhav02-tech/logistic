@@ -5,7 +5,6 @@ import joblib
 
 # Load trained model and scaler
 model = joblib.load("logistic_model.pkl")
-scaler = joblib.load("scaler.pkl")
 
 # App title
 st.title("Diabetes Prediction using Logistic Regression")
@@ -37,10 +36,11 @@ if st.button("Predict Diabetes"):
 })
     
     # Predict
-    prediction = model.predict(input_data)
+    prediction = model.predict(input_data.values)
     
     # Output
     if prediction[0] == 1:
         st.error("⚠️ Prediction: Diabetic")
     else:
+
         st.success("✅ Prediction: Not Diabetic")
